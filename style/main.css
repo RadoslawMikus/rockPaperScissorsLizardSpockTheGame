@@ -95,6 +95,11 @@ nav {
   font-size: 64px;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
 .playerOption {
   width: 10vw;
   height: 10vw;
@@ -110,15 +115,27 @@ nav {
   background-color: lightblue;
 }
 
+.aiOption {
+  width: 30vw;
+  height: 30vw;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
 .active {
   background-color: lightblue;
 }
 
 .won,
+.draw,
 .lost {
   position: relative;
 }
 .won::after,
+.draw::after,
 .lost::after {
   content: "";
   position: absolute;
@@ -136,17 +153,18 @@ nav {
   background-color: green;
 }
 
+.draw {
+  border: 5px solid yellow;
+}
+.draw::after {
+  background-color: rgb(179, 179, 0);
+}
+
 .lost {
   border: 5px solid rgb(216, 24, 24);
 }
 .lost::after {
   background-color: rgb(150, 0, 0);
-}
-
-.aiOption {
-  width: 40%;
-  padding-bottom: 40%;
-  border: 1px solid black;
 }
 
 footer {

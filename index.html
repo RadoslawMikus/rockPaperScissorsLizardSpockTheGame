@@ -22,22 +22,22 @@
       <div class="centerResult"><span>0</span>:<span>0</span><div class="rules">HOW TO PLAY</div></div>
       <div class="aiResult">Computer
         <div class="aiPoints">
-          <span class="point scored"></span>
-          <span class="point scored"></span>
+          <span class="point"></span>
+          <span class="point"></span>
           <span class="point"></span>
           <span class="point"></span>
           <span class="point"></span></div>
     </nav>
     <div class="container">
       <div class="playerSide">
-        <div class="playerOption">rock</div>
-        <div class="playerOption">paper</div>
-        <div class="playerOption">scissors</div>
-        <div class="playerOption">lizard</div>
-        <div class="playerOption">spock</div>
+        <div class="playerOption won" name="rock">rock</div>
+        <div class="playerOption" name="paper">paper</div>
+        <div class="playerOption lost" name="scissors">scissors</div>
+        <div class="playerOption" name="lizard">lizard</div>
+        <div class="playerOption draw" name="spock">spock</div>
       </div>
-      <div class="middleArea">VS</div>
-      <div class="aiSide"><div class="aiOption">lizard</div></div>
+      <div class="middleArea"><div>VS</div><div class="buttons"><button class="start">Graj!</button><button class="restart">Restart</button></div></div>
+      <div class="aiSide"><div class="aiOption" name="paper">paper</div></div>
     </div>
     <footer>
       <div class="gameName">
@@ -46,5 +46,6 @@
       <div class="createdBy">RM Designs</div>
     </footer>
     <script src="./script/options.js"></script>
+    <script src="./script/game.js"></script>
   </body>
 </html>
