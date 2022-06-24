@@ -1,6 +1,7 @@
+const options = ["rock", "paper", "scissors", "lizard", "spock"];
 class AiDecision {
-  constructor() {
-    this.options = ["rock", "paper", "scissors", "lizard", "spock"];
+  constructor(options) {
+    this.options = options;
   }
 
   makeADecision() {
@@ -8,8 +9,9 @@ class AiDecision {
     const max = Math.floor(5);
     const randomAi = Math.floor(Math.random() * (max - min)) + min;
     aiChoice.setAttribute("name", this.options[randomAi]);
-    aiChoice.textContent = this.options[randomAi];
+    // aiChoice.textContent = this.options[randomAi];
+    aiChoice.classList.add(this.options[randomAi]);
   }
 }
 
-const pcOption = new AiDecision();
+const pcOption = new AiDecision(options);

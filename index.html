@@ -30,13 +30,13 @@
     </nav>
     <div class="container">
       <div class="playerSide">
-        <div class="playerOption" name="rock">rock</div>
-        <div class="playerOption" name="paper">paper</div>
-        <div class="playerOption" name="scissors">scissors</div>
-        <div class="playerOption" name="lizard">lizard</div>
-        <div class="playerOption" name="spock">spock</div>
+        <div class="playerOption poHover rock blocked" name="rock"></div>
+        <div class="playerOption poHover paper" name="paper"></div>
+        <div class="playerOption poHover scissors" name="scissors"></div>
+        <div class="playerOption poHover lizard" name="lizard"></div>
+        <div class="playerOption poHover spock" name="spock"></div>
       </div>
-      <div class="middleArea"><div>VS</div><div class="buttons"><button class="start">▶︎ Graj!</button><button class="restart">Restart</button></div></div>
+      <div class="middleArea"><div class="status">WELCOME!</div><div>VS</div><div class="buttons"><button class="restart"><img src="./images/reset.png"></button><button class="start"><img src="./images/play.png"></button></div></div>
       <div class="aiSide"><div class="aiOption"></div></div>
     </div>
     <footer>
@@ -47,7 +47,7 @@
     </footer>
     <div class="finalResult hide"><button class="closingX">X</button><h1>Gratulacje!</h1><p>Komputer nie miał z Tobą żadnych szans!</p><button class="restart">Restart</button></div>
     <div class="howToPlay hide"><span>How to play RPSLS - the Game?</span>
-      <div class="youtubeFrame"></div>
+      <!-- <div class="youtubeFrame"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/x5Q6-wMx-K8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div> -->
     </div>
     <div class="overlay hide"></div>
     <script src="./script/game.js"></script>

@@ -5,6 +5,8 @@ const playerPoint = document.querySelector(".centerResult span:first-of-type");
 const aiChoice = document.querySelector(".aiOption");
 const aiPoints = document.querySelectorAll(".aiPoints span");
 const aiPoint = document.querySelector(".centerResult span:last-of-type");
+const statusResult = document.querySelector(".status");
+const startButton = document.querySelector(".start");
 
 class Option {
   constructor(rock, paper, scissors, lizard, spock) {
@@ -18,34 +20,44 @@ class Option {
   haveYouWon(aiChoice, plChoice) {
     this.aiChoice = this[aiChoice];
     clearOptions();
+    startButton.removeEventListener("click", checkIfWon);
+    playerChoices.forEach((choice) => {
+      choice.classList.remove("poHover");
+      choice.classList.add("blocked");
+    });
     if (this.aiChoice) {
       playerPoints[parseInt(playerPoint.textContent)].classList.add("scored");
       playerPoint.textContent = parseInt(playerPoint.textContent) + 1;
       document.querySelector(".aiOption").classList.add("lost");
       document.getElementsByName(plChoice)[0].classList.add("won");
-      console.log("You won!");
+      statusResult.textContent = "You won!";
     } else if (this.aiChoice === null) {
       document.querySelector(".aiOption").classList.add("draw");
       document.getElementsByName(plChoice)[0].classList.add("draw");
-      console.log("Draw!");
+      statusResult.textContent = "It's a tie!";
     } else {
       aiPoints[parseInt(aiPoint.textContent)].classList.add("scored");
       aiPoint.textContent = parseInt(aiPoint.textContent) + 1;
       document.querySelector(".aiOption").classList.add("won");
       document.getElementsByName(plChoice)[0].classList.add("lost");
-      console.log("You lost!");
+      statusResult.textContent = "You lost!";
     }
+
     setTimeout(function () {
       if (playerPoint.textContent === "5") {
         console.log("Wygrałeś!");
-        resetGame();
       } else if (aiPoint.textContent === "5") {
         console.log("Przegrałeś!");
-        resetGame();
       } else {
         clearOptions();
+        clearAi();
+        startButton.addEventListener("click", checkIfWon);
+        playerChoices.forEach((choice) => {
+          choice.classList.add("poHover");
+          choice.classList.remove("blocked");
+        });
       }
-    }, 2000);
+    }, 3000);
   }
 }
 
@@ -63,26 +75,25 @@ const playerChoice = function () {
         choice.classList.remove("active");
       });
       // ADD ACTIVE
-      choice.classList.add("active");
+      if (!choice.classList.contains("blocked")) {
+        choice.classList.add("active");
+      }
     });
   });
 };
 
+const checkIfWon = () => {
+  if (document.querySelector(".active")) {
+    pcOption.makeADecision();
+    const daChoice = document.querySelector(".active").getAttribute("name");
+    eval(daChoice).haveYouWon(aiChoice.getAttribute("name"), daChoice);
+  } else {
+    console.log("Wybierz coś");
+  }
+};
+
 const playGame = () => {
-  const startButton = document.querySelector(".start");
-  startButton.addEventListener("click", () => {
-    console.log(document.querySelector(".active").getAttribute("name"));
-    console.log(aiChoice.getAttribute("name"));
-    if (document.querySelector(".active")) {
-      console.log(pcOption.makeADecision());
-      const daChoice = document.querySelector(".active").getAttribute("name");
-      console.log(
-        eval(daChoice).haveYouWon(aiChoice.getAttribute("name"), daChoice)
-      );
-    } else {
-      console.log("Wybierz coś");
-    }
-  });
+  startButton.addEventListener("click", checkIfWon);
 };
 
 playerChoice();

@@ -10,6 +10,11 @@ const clearOptions = () => {
   aiChoice.classList.remove("lost");
 };
 
+const clearAi = () => {
+  options.forEach((opt) => aiChoice.classList.remove(opt));
+  aiChoice.removeAttribute("name");
+};
+
 const resetGame = () => {
   aiPoint.textContent = 0;
   playerPoint.textContent = 0;
@@ -17,6 +22,7 @@ const resetGame = () => {
   aiPoints.forEach((item) => item.classList.remove("scored"));
   playerChoices.forEach((item) => item.classList.remove("active"));
   clearOptions();
+  clearAi();
 };
 const restartButton = document.querySelector(".restart");
 restartButton.addEventListener("click", resetGame);
@@ -31,7 +37,7 @@ const clickToCloseModal = () => {
   overlay.classList.add("hide");
   rulesModal.classList.add("hide");
   finalResult.classList.add("hide");
-  youtubeFrame.innerHTML = "";
+  youtubeFrame.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/x5Q6-wMx-K8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
 };
 
 overlay.addEventListener("click", clickToCloseModal);
@@ -44,9 +50,6 @@ window.addEventListener("keydown", (e) => {
 
 const rulesButton = document.querySelector(".rules");
 rulesButton.addEventListener("click", () => {
-  youtubeFrame.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/x5Q6-wMx-K8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-  setTimeout(() => {
-    overlay.classList.remove("hide");
-    rulesModal.classList.remove("hide");
-  }, 250);
+  overlay.classList.remove("hide");
+  rulesModal.classList.remove("hide");
 });
