@@ -46,6 +46,31 @@ nav {
   border-radius: 5px;
 }
 
+.finalResult {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+  width: 50%;
+  background-color: rgb(255, 228, 196);
+  border: 5px solid black;
+  border-radius: 20px;
+  color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+}
+.finalResult h1,
+.finalResult p {
+  text-align: center;
+  opacity: 1;
+  margin: 10px 0;
+}
+
 .scored {
   background-color: yellow;
 }
@@ -66,6 +91,57 @@ nav {
   border-radius: 15px;
   font-size: 16px;
   top: 75px;
+  cursor: pointer;
+}
+
+.howToPlay {
+  position: fixed;
+  z-index: 50;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  width: 50%;
+  background-color: rgb(255, 228, 196);
+  border: 5px solid black;
+  border-radius: 20px;
+  color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+.howToPlay span {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+}
+
+.overlay {
+  content: "";
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.631);
+  z-index: 0;
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.youtubeFrame {
+  height: 85%;
+  width: 100%;
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .container {

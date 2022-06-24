@@ -15,23 +15,37 @@ class Option {
     this.spock = spock;
   }
 
-  haveYouWon(aiChoice) {
+  haveYouWon(aiChoice, plChoice) {
     this.aiChoice = this[aiChoice];
     clearOptions();
     if (this.aiChoice) {
       playerPoints[parseInt(playerPoint.textContent)].classList.add("scored");
       playerPoint.textContent = parseInt(playerPoint.textContent) + 1;
       document.querySelector(".aiOption").classList.add("lost");
-      return "You won!";
+      document.getElementsByName(plChoice)[0].classList.add("won");
+      console.log("You won!");
     } else if (this.aiChoice === null) {
       document.querySelector(".aiOption").classList.add("draw");
-      return "Draw!";
+      document.getElementsByName(plChoice)[0].classList.add("draw");
+      console.log("Draw!");
     } else {
       aiPoints[parseInt(aiPoint.textContent)].classList.add("scored");
       aiPoint.textContent = parseInt(aiPoint.textContent) + 1;
       document.querySelector(".aiOption").classList.add("won");
-      return "You lost!";
+      document.getElementsByName(plChoice)[0].classList.add("lost");
+      console.log("You lost!");
     }
+    setTimeout(function () {
+      if (playerPoint.textContent === "5") {
+        console.log("Wygrałeś!");
+        resetGame();
+      } else if (aiPoint.textContent === "5") {
+        console.log("Przegrałeś!");
+        resetGame();
+      } else {
+        clearOptions();
+      }
+    }, 2000);
   }
 }
 
@@ -57,11 +71,14 @@ const playerChoice = function () {
 const playGame = () => {
   const startButton = document.querySelector(".start");
   startButton.addEventListener("click", () => {
+    console.log(document.querySelector(".active").getAttribute("name"));
+    console.log(aiChoice.getAttribute("name"));
     if (document.querySelector(".active")) {
-      const daChoice = eval(
-        document.querySelector(".active").getAttribute("name")
+      console.log(pcOption.makeADecision());
+      const daChoice = document.querySelector(".active").getAttribute("name");
+      console.log(
+        eval(daChoice).haveYouWon(aiChoice.getAttribute("name"), daChoice)
       );
-      console.log(daChoice.haveYouWon(aiChoice.getAttribute("name")));
     } else {
       console.log("Wybierz coś");
     }

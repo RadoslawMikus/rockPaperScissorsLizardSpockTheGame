@@ -30,14 +30,14 @@
     </nav>
     <div class="container">
       <div class="playerSide">
-        <div class="playerOption won" name="rock">rock</div>
+        <div class="playerOption" name="rock">rock</div>
         <div class="playerOption" name="paper">paper</div>
-        <div class="playerOption lost" name="scissors">scissors</div>
+        <div class="playerOption" name="scissors">scissors</div>
         <div class="playerOption" name="lizard">lizard</div>
-        <div class="playerOption draw" name="spock">spock</div>
+        <div class="playerOption" name="spock">spock</div>
       </div>
-      <div class="middleArea"><div>VS</div><div class="buttons"><button class="start">Graj!</button><button class="restart">Restart</button></div></div>
-      <div class="aiSide"><div class="aiOption" name="paper">paper</div></div>
+      <div class="middleArea"><div>VS</div><div class="buttons"><button class="start">▶︎ Graj!</button><button class="restart">Restart</button></div></div>
+      <div class="aiSide"><div class="aiOption"></div></div>
     </div>
     <footer>
       <div class="gameName">
@@ -45,7 +45,13 @@
       </div>
       <div class="createdBy">RM Designs</div>
     </footer>
-    <script src="./script/options.js"></script>
+    <div class="finalResult hide"><button class="closingX">X</button><h1>Gratulacje!</h1><p>Komputer nie miał z Tobą żadnych szans!</p><button class="restart">Restart</button></div>
+    <div class="howToPlay hide"><span>How to play RPSLS - the Game?</span>
+      <div class="youtubeFrame"></div>
+    </div>
+    <div class="overlay hide"></div>
     <script src="./script/game.js"></script>
+    <script src="./script/options.js"></script>
+    <script src="./script/ai.js"></script>
   </body>
 </html>
