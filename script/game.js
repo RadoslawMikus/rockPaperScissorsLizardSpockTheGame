@@ -4,6 +4,8 @@ const clearOptions = () => {
     choice.classList.remove("draw");
     choice.classList.remove("lost");
     choice.classList.remove("active");
+    choice.classList.remove("blocked");
+    choice.classList.add("poHover");
   });
   aiChoice.classList.remove("won");
   aiChoice.classList.remove("draw");
@@ -53,3 +55,18 @@ rulesButton.addEventListener("click", () => {
   overlay.classList.remove("hide");
   rulesModal.classList.remove("hide");
 });
+
+let clock = 0;
+const timerDiv = document.querySelector(".timer");
+
+const timer = () => {
+  let hours = Math.floor(clock / 3600);
+  let minutes = Math.floor(clock / 60) - hours * 60;
+  let seconds = clock - hours * 3600 - minutes * 60;
+  let tiktok =
+    (clock >= 3600 ? `${hours < 10 ? "0" + hours : hours}h ` : "") +
+    (clock >= 60 ? `${minutes < 10 ? "0" + minutes : minutes}m ` : "") +
+    `${seconds < 10 ? "0" + seconds : seconds}s`;
+  timerDiv.textContent = tiktok;
+  clock++;
+};

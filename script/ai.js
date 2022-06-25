@@ -9,7 +9,6 @@ class AiDecision {
     const max = Math.floor(5);
     const randomAi = Math.floor(Math.random() * (max - min)) + min;
     aiChoice.setAttribute("name", this.options[randomAi]);
-    // aiChoice.textContent = this.options[randomAi];
     aiChoice.classList.add(this.options[randomAi]);
   }
 }

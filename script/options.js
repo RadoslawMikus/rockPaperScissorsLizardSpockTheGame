@@ -1,4 +1,5 @@
 "use strict";
+let timerInterval;
 const playerChoices = document.querySelectorAll(".playerOption");
 const playerPoints = document.querySelectorAll(".playerPoints span");
 const playerPoint = document.querySelector(".centerResult span:first-of-type");
@@ -7,6 +8,8 @@ const aiPoints = document.querySelectorAll(".aiPoints span");
 const aiPoint = document.querySelector(".centerResult span:last-of-type");
 const statusResult = document.querySelector(".status");
 const startButton = document.querySelector(".start");
+const resetButton = document.querySelector(".reset");
+const finalResultHeader = document.querySelector(".finalResult h1");
 
 class Option {
   constructor(rock, paper, scissors, lizard, spock) {
@@ -43,12 +46,20 @@ class Option {
       statusResult.textContent = "You lost!";
     }
 
-    setTimeout(function () {
-      if (playerPoint.textContent === "5") {
-        console.log("Wygrałeś!");
-      } else if (aiPoint.textContent === "5") {
-        console.log("Przegrałeś!");
-      } else {
+    if (playerPoint.textContent === "2") {
+      finalResult.classList.remove("hide");
+      overlay.classList.remove("hide");
+      finalResultHeader.textContent = "You f'ckin won! Hell yeah!";
+      startButton.addEventListener("click", checkIfWon);
+      clearInterval(timerInterval);
+    } else if (aiPoint.textContent === "2") {
+      finalResult.classList.remove("hide");
+      overlay.classList.remove("hide");
+      finalResultHeader.textContent = "Ha ha! You lose!";
+      startButton.addEventListener("click", checkIfWon);
+      clearInterval(timerInterval);
+    } else {
+      setTimeout(function () {
         clearOptions();
         clearAi();
         startButton.addEventListener("click", checkIfWon);
@@ -56,8 +67,8 @@ class Option {
           choice.classList.add("poHover");
           choice.classList.remove("blocked");
         });
-      }
-    }, 3000);
+      }, 3000);
+    }
   }
 }
 
@@ -74,6 +85,9 @@ const playerChoice = function () {
       playerChoices.forEach((choice) => {
         choice.classList.remove("active");
       });
+      if (aiPoint.textContent === "0" && playerPoint.textContent === "0") {
+        timerInterval = setInterval(timer, 1000);
+      }
       // ADD ACTIVE
       if (!choice.classList.contains("blocked")) {
         choice.classList.add("active");
@@ -91,6 +105,11 @@ const checkIfWon = () => {
     console.log("Wybierz coś");
   }
 };
+
+resetButton.addEventListener("click", () => {
+  resetGame();
+  clickToCloseModal();
+});
 
 const playGame = () => {
   startButton.addEventListener("click", checkIfWon);

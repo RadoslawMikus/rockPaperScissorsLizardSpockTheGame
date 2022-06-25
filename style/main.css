@@ -71,6 +71,21 @@ nav {
   margin: 10px 0;
 }
 
+.reset {
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  padding: 10px;
+  margin-top: 20px;
+}
+.reset img {
+  width: 30px;
+  margin: 0 10px 0 0;
+}
+
 .scored {
   background-color: yellow;
 }
@@ -216,10 +231,10 @@ nav {
   align-items: center;
   border: 1px solid black;
   background-color: grey;
-  cursor: pointer;
 }
 
 .poHover {
+  cursor: pointer;
   transition: background-color 0.5s ease-in-out;
 }
 .poHover:hover {
@@ -228,7 +243,7 @@ nav {
 }
 
 .aiOption {
-  width: 30vw;
+  width: 25vw;
   height: 30vw;
   border: 1px solid black;
   display: flex;
@@ -236,6 +251,11 @@ nav {
   justify-content: center;
   position: relative;
   border-radius: 10px;
+  background-image: url("../images/logo.png");
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: grey;
 }
 
 .rock,
