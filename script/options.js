@@ -10,6 +10,8 @@ const statusResult = document.querySelector(".status");
 const startButton = document.querySelector(".start");
 const resetButton = document.querySelector(".reset");
 const finalResultHeader = document.querySelector(".finalResult h1");
+const finalResultModal = document.querySelector(".finalResultRight");
+const randomQuoteDiv = document.querySelector(".randomQuote");
 
 class Option {
   constructor(rock, paper, scissors, lizard, spock) {
@@ -28,6 +30,7 @@ class Option {
       choice.classList.remove("poHover");
       choice.classList.add("blocked");
     });
+    document.querySelector(".howFast").textContent = timer();
     if (this.aiChoice) {
       playerPoints[parseInt(playerPoint.textContent)].classList.add("scored");
       playerPoint.textContent = parseInt(playerPoint.textContent) + 1;
@@ -46,13 +49,17 @@ class Option {
       statusResult.textContent = "You lost!";
     }
 
-    if (playerPoint.textContent === "2") {
+    if (playerPoint.textContent === "5") {
+      finalResultModal.classList.add("won" + randomizer(1, 3));
+      randomQuoteDiv.textContent = randomQuote("won");
       finalResult.classList.remove("hide");
       overlay.classList.remove("hide");
       finalResultHeader.textContent = "You f'ckin won! Hell yeah!";
       startButton.addEventListener("click", checkIfWon);
       clearInterval(timerInterval);
-    } else if (aiPoint.textContent === "2") {
+    } else if (aiPoint.textContent === "5") {
+      finalResultModal.classList.add("lost" + randomizer(1, 3));
+      randomQuoteDiv.textContent = randomQuote("lost");
       finalResult.classList.remove("hide");
       overlay.classList.remove("hide");
       finalResultHeader.textContent = "Ha ha! You lose!";
@@ -85,7 +92,11 @@ const playerChoice = function () {
       playerChoices.forEach((choice) => {
         choice.classList.remove("active");
       });
-      if (aiPoint.textContent === "0" && playerPoint.textContent === "0") {
+      if (
+        parseInt(aiPoint.textContent) === 0 &&
+        parseInt(playerPoint.textContent) === 0 &&
+        clock === 0
+      ) {
         timerInterval = setInterval(timer, 1000);
       }
       // ADD ACTIVE

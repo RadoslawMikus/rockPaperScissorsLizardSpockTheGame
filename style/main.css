@@ -17,6 +17,78 @@ nav {
   justify-content: space-between;
 }
 
+.pop1 {
+  position: fixed;
+  top: -400px;
+  right: -100px;
+  transform: rotate(210deg);
+  transition: top 2s ease-in-out;
+  z-index: 100000;
+}
+
+.pop1Hide {
+  top: -700px;
+}
+
+.pop2 {
+  position: fixed;
+  bottom: -20px;
+  right: 0;
+  transition: 2s ease-in-out;
+}
+.pop2 img {
+  width: 200px;
+}
+
+.pop2Hide {
+  right: -200px;
+}
+
+.pop3 {
+  position: fixed;
+  bottom: 0;
+  right: 50%;
+  left: 50%;
+  transform: rotate(20deg);
+  transition: bottom 2s ease-in-out;
+}
+.pop3 img {
+  width: 300px;
+}
+
+.pop3Hide {
+  bottom: -250px;
+}
+
+.pop4 {
+  position: fixed;
+  bottom: -500px;
+  transform: rotate(10deg);
+  transition: bottom 5s ease-in-out;
+}
+.pop4 img {
+  width: 300px;
+}
+
+.pop4Hide {
+  bottom: -3000px;
+}
+
+.pop5 {
+  position: fixed;
+  top: 0px;
+  left: -100px;
+  transform: rotate(30deg);
+  transition: left 3s ease-in-out;
+}
+.pop5 img {
+  width: 250px;
+}
+
+.pop5Hide {
+  left: -2000px;
+}
+
 .playerResult,
 .aiResult {
   height: 100%;
@@ -26,6 +98,7 @@ nav {
   justify-content: center;
   align-items: center;
   color: #fff;
+  font-size: 20px;
 }
 
 .playerPoints,
@@ -39,11 +112,21 @@ nav {
 }
 
 .point {
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 18px;
   background-color: white;
-  margin: 10px;
+  margin: 3px;
   border-radius: 5px;
+}
+
+.timeAndScore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer {
+  font-size: 16px;
 }
 
 .finalResult {
@@ -51,27 +134,38 @@ nav {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 50%;
-  width: 50%;
+  height: 90%;
+  width: 80%;
   background-color: rgb(255, 228, 196);
-  border: 5px solid black;
-  border-radius: 20px;
+  border-radius: 10px;
   color: black;
-  padding: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  z-index: 10;
+  z-index: 1000;
 }
 .finalResult h1,
 .finalResult p {
-  text-align: center;
   opacity: 1;
   margin: 10px 0;
 }
 
-.reset {
+.finalResultLeft {
+  border: 1px solid blue;
+  padding: 20px;
+}
+.finalResultLeft .randomQuote {
+  background-color: white;
+  border: 1px solid #202020;
+  padding: 30px 20px;
+  margin: 30px 0;
+}
+.finalResultLeft .randomQuote::before {
+  content: "Sheldon's quote: ";
+  color: red;
+}
+.finalResultLeft .reset {
   background-color: transparent;
   border: 1px solid black;
   border-radius: 10px;
@@ -79,11 +173,67 @@ nav {
   align-items: center;
   font-size: 24px;
   padding: 10px;
-  margin-top: 20px;
+  margin: 20px 0 0 auto;
 }
-.reset img {
+.finalResultLeft .reset img {
   width: 30px;
   margin: 0 10px 0 0;
+}
+
+.finalResultRight {
+  width: 50%;
+  border: 1px solid red;
+  height: 100%;
+}
+
+.closingX {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background-color: transparent;
+  border: 0;
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+.closingX:hover {
+  opacity: 1;
+}
+
+.won1,
+.won2,
+.won3,
+.lost1,
+.lost2,
+.lost3 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+}
+
+.won1 {
+  background-image: url("../images/won/1.png");
+}
+
+.won2 {
+  background-image: url("../images/won/2.png");
+}
+
+.won3 {
+  background-image: url("../images/won/3.png");
+}
+
+.lost1 {
+  background-image: url("../images/lost/1.png");
+}
+
+.lost2 {
+  background-image: url("../images/lost/2.png");
+}
+
+.lost3 {
+  background-image: url("../images/lost/3.png");
 }
 
 .scored {
@@ -95,7 +245,7 @@ nav {
   width: 20%;
   display: flex;
   justify-content: center;
-  padding-top: 15px;
+  padding-top: 5px;
   font-size: 32px;
 }
 
@@ -107,32 +257,35 @@ nav {
   font-size: 16px;
   top: 75px;
   cursor: pointer;
+  z-index: 100;
 }
 
 .howToPlay {
   position: fixed;
-  z-index: 50;
+  z-index: 1000;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 80%;
-  width: 50%;
+  height: 70%;
+  width: 80%;
   background-color: rgb(255, 228, 196);
   border: 5px solid black;
   border-radius: 20px;
   color: black;
-  padding: 20px;
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  justify-content: space-evenly;
+  flex-direction: row;
   align-items: center;
 }
+.howToPlay .howToPlayLeft {
+  width: 40%;
+}
 .howToPlay span {
-  height: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 22px;
+}
+.howToPlay ol {
+  margin: 25px;
+  font-size: 18px;
 }
 
 .overlay {
@@ -143,7 +296,7 @@ nav {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.631);
-  z-index: 0;
+  z-index: 900;
   display: block;
 }
 
@@ -152,8 +305,8 @@ nav {
 }
 
 .youtubeFrame {
-  height: 85%;
-  width: 100%;
+  height: 70%;
+  width: 50%;
   z-index: 1;
   border-radius: 10px;
   overflow: hidden;
@@ -162,6 +315,7 @@ nav {
 .container {
   height: calc(100vh - 160px);
   display: flex;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   color: #000;
@@ -170,24 +324,20 @@ nav {
 .playerSide,
 .aiSide {
   height: 100%;
-  width: 45%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   align-content: center;
-}
-
-.playerSide {
-  padding-right: 50px;
+  flex-direction: row;
 }
 
 .middleArea {
-  font-size: 64px;
+  font-size: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   height: 80%;
 }
 
@@ -195,6 +345,7 @@ nav {
   font-size: 32px;
   width: 200px;
   text-align: center;
+  margin: 10px;
 }
 
 .buttons {
@@ -222,9 +373,9 @@ nav {
 }
 
 .playerOption {
-  width: 10vw;
-  height: 10vw;
-  margin: 10px;
+  width: 24%;
+  padding-bottom: 25%;
+  margin: 2px;
   display: flex;
   border-radius: 10px;
   justify-content: center;
@@ -243,8 +394,8 @@ nav {
 }
 
 .aiOption {
-  width: 25vw;
-  height: 30vw;
+  width: 30%;
+  height: 85%;
   border: 1px solid black;
   display: flex;
   align-items: center;
@@ -256,6 +407,15 @@ nav {
   background-repeat: no-repeat;
   background-position: center;
   background-color: grey;
+  align-self: flex-end;
+}
+
+.mobile {
+  display: block;
+}
+
+.pc {
+  display: none;
 }
 
 .rock,
@@ -263,12 +423,69 @@ nav {
 .scissors,
 .lizard,
 .spock {
-  background-size: 60%;
+  background-size: 90%;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 10px;
 }
 
+@media (orientation: landscape) {
+  .container {
+    flex-direction: row;
+  }
+
+  .middleArea {
+    justify-content: space-around;
+  }
+
+  .playerSide,
+.aiSide {
+    width: 45%;
+    height: 100%;
+    flex-wrap: wrap;
+  }
+
+  .playerOption {
+    height: 45%;
+    width: auto;
+    padding-bottom: 0;
+    padding-right: 30%;
+    margin: 2px;
+  }
+
+  .rock,
+.paper,
+.scissors,
+.lizard,
+.spock {
+    background-size: 90%;
+  }
+
+  .aiOption {
+    width: 80%;
+    height: 85%;
+  }
+}
+@media (orientation: landscape) and (min-width: 992px) {
+  .playerOption {
+    height: 30%;
+    padding-right: 25%;
+    margin: 2px;
+  }
+
+  .rock,
+.paper,
+.scissors,
+.lizard,
+.spock {
+    background-size: 60%;
+  }
+
+  .aiOption {
+    width: 55%;
+    height: 80%;
+  }
+}
 .rock {
   background-image: url(../images/rock.svg);
 }
@@ -293,6 +510,56 @@ nav {
   background-color: lightblue;
 }
 
+@media (min-width: 769px) {
+  .finalResult {
+    height: 70%;
+  }
+
+  .finalResultLeft {
+    width: 70%;
+  }
+
+  .point {
+    width: 28px;
+    height: 28px;
+    margin: 5px;
+  }
+
+  .playerResult,
+.aiResult {
+    font-size: 26px;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .pc {
+    display: block;
+  }
+
+  .finalResult {
+    flex-direction: row;
+  }
+
+  .finalResultRight {
+    width: 30%;
+  }
+
+  .won3 {
+    background-size: 150%;
+    background-position: 50% 100%;
+  }
+
+  .won1,
+.won2,
+.won3,
+.lost1,
+.lost2,
+.lost3 {
+    background-position: bottom right;
+  }
+}
 .won,
 .draw,
 .lost {

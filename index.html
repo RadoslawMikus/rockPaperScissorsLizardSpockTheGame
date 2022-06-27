@@ -19,24 +19,41 @@
           <span class="point"></span>
         </div>
       </div>
-      <div class="centerResult"><span>0</span>:<span>0</span><div class="timer"></div><div class="rules">HOW TO PLAY</div></div>
-      <div class="aiResult">Computer
+      <div class="centerResult">
+        <div class="timeAndScore">
+          <div><span>0</span>:<span>0</span></div>
+          <div class="timer">--:--</div>
+        </div>
+        <div class="rules pc">HOW TO PLAY</div>
+        <div class="rules mobile">RULES</div>
+      </div>
+      <div class="aiResult">
+        Computer
         <div class="aiPoints">
           <span class="point"></span>
           <span class="point"></span>
           <span class="point"></span>
           <span class="point"></span>
-          <span class="point"></span></div>
+          <span class="point"></span>
+        </div>
+      </div>
     </nav>
     <div class="container">
       <div class="playerSide">
-        <div class="playerOption poHover rock blocked" name="rock"></div>
+        <div class="playerOption poHover rock" name="rock"></div>
         <div class="playerOption poHover paper" name="paper"></div>
         <div class="playerOption poHover scissors" name="scissors"></div>
         <div class="playerOption poHover lizard" name="lizard"></div>
         <div class="playerOption poHover spock" name="spock"></div>
       </div>
-      <div class="middleArea"><div class="status">WELCOME!</div><div>VS</div><div class="buttons"><button class="restart"><img src="./images/reset.png"></button><button class="start"><img src="./images/play.png"></button></div></div>
+      <div class="middleArea">
+        <div class="status">WELCOME!</div>
+        <div class="pc">VS</div>
+        <div class="buttons">
+          <button class="restart"><img src="./images/reset.png" /></button
+          ><button class="start"><img src="./images/play.png" /></button>
+        </div>
+      </div>
       <div class="aiSide"><div class="aiOption"></div></div>
     </div>
     <footer>
@@ -45,11 +62,46 @@
       </div>
       <div class="createdBy">RM Designs</div>
     </footer>
-    <div class="finalResult "><button class="closingX">X</button><h1>Gratulacje!</h1><p>Komputer nie miał z Tobą żadnych szans!</p><button class="reset"><img src="./images/reset.png">Play again!</button></div>
-    <div class="howToPlay hide"><span>How to play RPSLS - the Game?</span>
-      <!-- <div class="youtubeFrame"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/x5Q6-wMx-K8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div> -->
+    <div class="finalResult hide">
+      <div class="finalResultLeft">
+        <button class="closingX">X</button>
+        <h1>Gratulacje!</h1>
+        <p>
+          Komputer nie miał z Tobą żadnych szans! Zajęło Ci to:
+          <span class="howFast"></span>
+        </p>
+        <p class="randomQuote"></p>
+        <button class="reset">
+          <img src="./images/reset.png" />Play again!
+        </button>
+      </div>
+      <div class="finalResultRight"></div>
     </div>
-    <div class="overlay "></div>
+    <div class="howToPlay hide">
+      <button class="closingX">X</button>
+
+      <div class="howToPlayLeft">
+        <span>How to play RPSLS - the Game?</span>
+        <ol>
+          <li>Choose your option.</li>
+          <li>Click the green button.</li>
+          <li>Try to win!</li>
+        </ol>
+      </div>
+      <div class="youtubeFrame">
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/x5Q6-wMx-K8"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+    <div class="overlay hide"></div>
+    <div class="pop"></div>
     <script src="./script/game.js"></script>
     <script src="./script/options.js"></script>
     <script src="./script/ai.js"></script>

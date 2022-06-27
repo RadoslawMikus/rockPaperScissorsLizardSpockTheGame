@@ -5,9 +5,7 @@ class AiDecision {
   }
 
   makeADecision() {
-    const min = Math.ceil(0);
-    const max = Math.floor(5);
-    const randomAi = Math.floor(Math.random() * (max - min)) + min;
+    const randomAi = randomizer(0, 5);
     aiChoice.setAttribute("name", this.options[randomAi]);
     aiChoice.classList.add(this.options[randomAi]);
   }
