@@ -22,7 +22,7 @@ const resetGame = () => {
   timerDiv.textContent = "--:--";
   clock = 0;
   clearInterval(timerInterval);
-  statusResult.textContent = "WELCOME!";
+  statusResult.textContent = "BAZINGA!";
 };
 const restartButton = document.querySelector(".restart");
 restartButton.addEventListener("click", resetGame);
@@ -120,3 +120,4 @@ const popSheldon = () => {
 };
 
 setInterval(popSheldon, 20000);
+popSheldon();

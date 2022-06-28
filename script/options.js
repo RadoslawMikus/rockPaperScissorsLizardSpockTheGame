@@ -36,7 +36,7 @@ class Option {
       playerPoint.textContent = parseInt(playerPoint.textContent) + 1;
       document.querySelector(".aiOption").classList.add("lost");
       document.getElementsByName(plChoice)[0].classList.add("won");
-      statusResult.textContent = "You won!";
+      statusResult.textContent = "Point for you!";
     } else if (this.aiChoice === null) {
       document.querySelector(".aiOption").classList.add("draw");
       document.getElementsByName(plChoice)[0].classList.add("draw");
@@ -46,7 +46,7 @@ class Option {
       aiPoint.textContent = parseInt(aiPoint.textContent) + 1;
       document.querySelector(".aiOption").classList.add("won");
       document.getElementsByName(plChoice)[0].classList.add("lost");
-      statusResult.textContent = "You lost!";
+      statusResult.textContent = "Point for Sheldon!";
     }
 
     if (playerPoint.textContent === "5") {

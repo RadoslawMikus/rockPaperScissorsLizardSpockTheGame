@@ -1,4 +1,4 @@
-$mainColor: rgb(135, 0, 0);
+$mainColor: rgba(135, 0, 0, 0.8);
 $smallerResolutions: 992px;
 
 * {
@@ -10,6 +10,9 @@ $smallerResolutions: 992px;
 body {
   color: #fff;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: url("../images/bg.png");
+  background-size: cover;
+  background-position: 30%;
 }
 
 nav {
@@ -356,13 +359,15 @@ nav {
   align-items: center;
   justify-content: flex-end;
   height: 80%;
+  font-weight: 600;
 }
 
 .status {
-  font-size: 32px;
-  width: 200px;
+  font-size: 22px;
+  width: 230px;
   text-align: center;
-  margin: 10px;
+  margin: 10px 0;
+  padding: 10px 0;
 }
 
 .buttons {
