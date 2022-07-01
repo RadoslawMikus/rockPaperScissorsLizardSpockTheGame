@@ -54,7 +54,7 @@ class Option {
       randomQuoteDiv.textContent = randomQuote("won");
       finalResult.classList.remove("hide");
       overlay.classList.remove("hide");
-      finalResultHeader.textContent = "You f'ckin won! Hell yeah!";
+      finalResultHeader.textContent = "You won!";
       startButton.addEventListener("click", checkIfWon);
       clearInterval(timerInterval);
     } else if (aiPoint.textContent === "5") {
@@ -62,7 +62,7 @@ class Option {
       randomQuoteDiv.textContent = randomQuote("lost");
       finalResult.classList.remove("hide");
       overlay.classList.remove("hide");
-      finalResultHeader.textContent = "Ha ha! You lose!";
+      finalResultHeader.textContent = "You lose!";
       startButton.addEventListener("click", checkIfWon);
       clearInterval(timerInterval);
     } else {
