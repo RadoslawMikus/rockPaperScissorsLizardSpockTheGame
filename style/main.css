@@ -12,88 +12,48 @@ body {
   background-position: 30%;
 }
 
+.container {
+  height: calc(100vh - 160px);
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+}
+
+.closingX {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background-color: transparent;
+  border: 0;
+  opacity: 0.6;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+}
+.closingX:hover {
+  opacity: 1;
+}
+
+.overlay {
+  content: "";
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 4;
+  display: block;
+}
+
 nav {
   height: 100px;
   width: 100%;
   background-color: rgba(135, 0, 0, 0.8);
   display: flex;
   justify-content: space-between;
-}
-
-.pop1 {
-  position: fixed;
-  top: -400px;
-  right: -100px;
-  transform: rotate(210deg);
-  transition: top 2s ease-in-out;
-  z-index: 100000;
-}
-
-.pop1Hide {
-  top: -700px;
-}
-
-.pop2 {
-  position: fixed;
-  bottom: -20px;
-  right: 0;
-  transition: 2s ease-in-out;
-}
-
-.pop2 img {
-  width: 200px;
-}
-
-.pop2Hide {
-  right: -200px;
-}
-
-.pop3 {
-  position: fixed;
-  bottom: 0;
-  right: 50%;
-  left: 50%;
-  transform: rotate(20deg);
-  transition: bottom 2s ease-in-out;
-}
-
-.pop3 img {
-  width: 300px;
-}
-
-.pop3Hide {
-  bottom: -250px;
-}
-
-.pop4 {
-  position: fixed;
-  bottom: -500px;
-  transform: rotate(10deg);
-  transition: bottom 5s ease-in-out;
-}
-
-.pop4 img {
-  width: 300px;
-}
-
-.pop4Hide {
-  bottom: -3000px;
-}
-
-.pop5 {
-  position: fixed;
-  top: 0px;
-  left: -100px;
-  transform: rotate(30deg);
-  transition: left 3s ease-in-out;
-}
-
-.pop5 img {
-  width: 250px;
-}
-
-.pop5Hide {
-  left: -2000px;
 }
 
 .playerResult,
@@ -121,7 +81,7 @@ nav {
 .point {
   width: 18px;
   height: 18px;
-  background-color: white;
+  background-color: #fff;
   margin: 3px;
   border-radius: 5px;
 }
@@ -136,24 +96,255 @@ nav {
   font-size: 16px;
 }
 
+.scored {
+  background-color: #ffff00;
+}
+
+.centerResult {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  font-size: 32px;
+}
+
+.rules {
+  position: absolute;
+  background-color: #e69832;
+  padding: 10px;
+  border-radius: 15px;
+  font-size: 16px;
+  top: 75px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.playerSide,
+.aiSide {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+}
+
+.middleArea {
+  font-size: 32px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 80%;
+}
+
+.status {
+  font-size: 22px;
+  width: 230px;
+  text-align: center;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.restart,
+.start {
+  background-color: transparent;
+  border: 0;
+  display: inline;
+  cursor: pointer;
+  opacity: 0.8;
+  margin: 0 5px;
+}
+.restart img,
+.start img {
+  width: 50px;
+}
+.restart:hover,
+.start:hover {
+  opacity: 1;
+}
+
+.rock,
+.paper,
+.scissors,
+.lizard,
+.spock {
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+
+.won,
+.draw,
+.lost {
+  position: relative;
+}
+.won::after,
+.draw::after,
+.lost::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  border-radius: 10px;
+}
+
+.won {
+  box-shadow: inset 0 0 25px #adff2f;
+}
+.won::after {
+  background-color: #008000;
+}
+
+.draw {
+  box-shadow: inset 0 0 25px #ffff00;
+}
+.draw::after {
+  background-color: #b3b300;
+}
+
+.lost {
+  box-shadow: inset 0 0 25px #d81818;
+}
+.lost::after {
+  background-color: #960000;
+}
+
+.playerOption {
+  width: 24%;
+  padding-bottom: 25%;
+  margin: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-color: #808080;
+}
+
+.poHover {
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+}
+.poHover:hover {
+  background-color: #add8e6;
+  border-radius: 10px;
+}
+
+.aiOption {
+  width: 30%;
+  height: 85%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  align-items: center;
+  align-self: flex-end;
+  background-image: url("../images/logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #808080;
+}
+
+.rock {
+  background-image: url(../images/rock.svg);
+}
+
+.paper {
+  background-image: url(../images/paper.svg);
+}
+
+.scissors {
+  background-image: url(../images/scissors.svg);
+}
+
+.lizard {
+  background-image: url(../images/lizard.svg);
+}
+
+.spock {
+  background-image: url(../images/spock.svg);
+}
+
+.howToPlay {
+  position: fixed;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90%;
+  width: 90%;
+  color: #000;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid #000;
+  border-radius: 20px;
+  background-color: #ffe4c4;
+  background-image: url("../images/pattern.jpg");
+  background-size: cover;
+}
+.howToPlay span {
+  font-size: 22px;
+}
+.howToPlay ol {
+  font-size: 18px;
+  margin: 25px;
+}
+
+.howToPlayLeft {
+  margin-top: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.youtubeFrame {
+  height: 70%;
+  width: 90%;
+  z-index: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
 .finalResult {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 90%;
   width: 80%;
-  background-color: rgb(255, 228, 196);
+  max-height: 95%;
+  padding: 20px 0;
   border-radius: 10px;
-  color: black;
+  color: #000;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 5;
+  background-color: #ffe4c4;
   background-image: url("../images/pattern.jpg");
+  background-size: cover;
 }
-
 .finalResult h1,
 .finalResult p {
   opacity: 1;
@@ -161,33 +352,27 @@ nav {
 }
 
 .finalResultLeft {
-  border: 1px solid blue;
-  padding: 20px;
+  padding: 0 20px;
 }
-
 .finalResultLeft .randomQuote {
-  background-color: white;
-  border: 1px solid #202020;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(32, 32, 32, 0.4);
   padding: 30px 20px;
-  margin: 30px 0;
 }
-
 .finalResultLeft .randomQuote::before {
   content: "Sheldon's quote: ";
-  color: red;
+  color: #ff0000;
 }
-
 .finalResultLeft .reset {
   background-color: transparent;
-  border: 1px solid black;
+  border: 1px solid #000;
   border-radius: 10px;
   display: flex;
   align-items: center;
   font-size: 24px;
   padding: 10px;
-  margin: 20px 0 0 auto;
+  margin: 10px 0 0 auto;
 }
-
 .finalResultLeft .reset img {
   width: 30px;
   margin: 0 10px 0 0;
@@ -195,24 +380,12 @@ nav {
 
 .finalResultRight {
   width: 50%;
-  border: 1px solid red;
   height: 100%;
+  display: none;
 }
 
-.closingX {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-  background-color: transparent;
-  border: 0;
-  opacity: 0.6;
-  transition: opacity 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-.closingX:hover {
-  opacity: 1;
+.resultPhrase {
+  font-style: italic;
 }
 
 .won1,
@@ -250,221 +423,118 @@ nav {
   background-image: url("../images/lost/3.png");
 }
 
-.scored {
-  background-color: yellow;
-}
-
-.centerResult {
-  height: 100%;
-  width: 20%;
-  display: flex;
-  justify-content: center;
-  padding-top: 5px;
-  font-size: 32px;
-}
-
-.rules {
-  position: absolute;
-  background-color: rgb(230, 152, 50);
-  padding: 10px;
-  border-radius: 15px;
-  font-size: 16px;
-  top: 75px;
-  cursor: pointer;
-  z-index: 100;
-}
-
-.howToPlay {
-  position: fixed;
-  z-index: 1000;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 90%;
-  width: 90%;
-  background-color: rgb(255, 228, 196);
-  border: 5px solid black;
-  border-radius: 20px;
-  color: black;
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-  align-items: center;
-  background-image: url("../images/pattern.jpg");
-  background-size: cover;
-}
-
-.howToPlayLeft {
-  margin-top: 20px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.howToPlay span {
-  font-size: 22px;
-}
-
-.howToPlay ol {
-  margin: 25px;
-  font-size: 18px;
-}
-
-.overlay {
-  content: "";
-  top: 0;
-  left: 0;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.631);
-  z-index: 900;
-  display: block;
-}
-
-.hide {
-  display: none;
-}
-
-.youtubeFrame {
-  height: 70%;
-  width: 90%;
-  z-index: 1;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.container {
-  height: calc(100vh - 160px);
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: center;
-  color: #000;
-}
-
-.playerSide,
-.aiSide {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  flex-direction: row;
-}
-
-.middleArea {
-  font-size: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 80%;
+.howFast {
+  padding: 10px 0;
   font-weight: 600;
 }
-
-.status {
-  font-size: 22px;
-  width: 230px;
-  text-align: center;
-  margin: 10px 0;
-  padding: 10px 0;
+.howFast span {
+  font-weight: 400;
 }
 
-.buttons {
-  display: flex;
-  justify-content: center;
+.pop1,
+.pop2,
+.pop3,
+.pop4,
+.pop5 {
+  position: fixed;
+  z-index: 3;
+}
+
+.pop1 {
+  top: -400px;
+  right: -100px;
+  transform: rotate(210deg);
+  transition: top 2s ease-in-out;
+}
+
+.pop1Hide {
+  top: -700px;
+}
+
+.pop2 {
+  bottom: -20px;
+  right: 0;
+  transition: 2s ease-in-out;
+}
+.pop2 img {
+  width: 200px;
+}
+
+.pop2Hide {
+  right: -200px;
+}
+
+.pop3 {
+  bottom: 0;
+  right: 50%;
+  left: 50%;
+  transform: rotate(20deg);
+  transition: bottom 2s ease-in-out;
+}
+.pop3 img {
+  width: 300px;
+}
+
+.pop3Hide {
+  bottom: -250px;
+}
+
+.pop4 {
+  bottom: -500px;
+  transform: rotate(10deg);
+  transition: bottom 5s ease-in-out;
+}
+.pop4 img {
+  width: 300px;
+}
+
+.pop4Hide {
+  bottom: -3000px;
+}
+
+.pop5 {
+  top: 0px;
+  left: -100px;
+  transform: rotate(30deg);
+  transition: left 3s ease-in-out;
+}
+.pop5 img {
+  width: 250px;
+}
+
+.pop5Hide {
+  left: -2000px;
+}
+
+footer {
+  padding: 0 20px;
+  height: 60px;
   width: 100%;
-}
-
-.restart,
-.start {
-  background-color: transparent;
-  border: 0;
-  display: inline;
-  cursor: pointer;
-  opacity: 0.8;
-  margin: 0 5px;
-}
-
-.restart img,
-.start img {
-  width: 50px;
-}
-
-.restart:hover,
-.start:hover {
-  opacity: 1;
-}
-
-.playerOption {
-  width: 24%;
-  padding-bottom: 25%;
-  margin: 2px;
+  background-color: rgba(135, 0, 0, 0.8);
   display: flex;
-  border-radius: 10px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
-  background-color: grey;
 }
 
-.poHover {
-  cursor: pointer;
-  transition: background-color 0.5s ease-in-out;
-}
-
-.poHover:hover {
-  background-color: lightblue;
-  border-radius: 10px;
-}
-
-.mobile {
+.shortFooter {
   display: block;
-}
-
-.pc {
-  display: none;
-}
-
-.rock,
-.paper,
-.scissors,
-.lizard,
-.spock {
-  background-size: 90%;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-}
-
-.aiOption {
-  width: 30%;
-  height: 85%;
-  border: 1px solid black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  border-radius: 10px;
-  background-image: url("../images/logo.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: grey;
-  align-self: flex-end;
 }
 
 .longFooter {
   display: none;
 }
 
-.shortFooter {
+.mobile {
   display: block;
+}
+
+.pc,
+.hide {
+  display: none;
+}
+
+.active {
+  background-color: #add8e6;
 }
 
 @media (orientation: landscape) {
@@ -484,19 +554,10 @@ nav {
   }
 
   .playerOption {
-    height: 45%;
+    height: 30%;
     width: auto;
-    padding-bottom: 0;
-    padding-right: 30%;
+    padding: 0 30% 0 0;
     margin: 2px;
-  }
-
-  .rock,
-.paper,
-.scissors,
-.lizard,
-.spock {
-    background-size: 90%;
   }
 
   .aiOption {
@@ -504,45 +565,19 @@ nav {
     height: 85%;
   }
 }
-.rock {
-  background-image: url(../images/rock.svg);
-}
-
-.paper {
-  background-image: url(../images/paper.svg);
-}
-
-.scissors {
-  background-image: url(../images/scissors.svg);
-}
-
-.lizard {
-  background-image: url(../images/lizard.svg);
-}
-
-.spock {
-  background-image: url(../images/spock.svg);
-}
-
-.active {
-  background-color: lightblue;
-}
-
 @media (max-width: 600px) {
   .finalResult {
-    height: 70%;
+    width: 95%;
   }
 
   .finalResultLeft {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
   }
-
-  .finalResultRight {
-    display: none;
+  .finalResultLeft .randomQuote {
+    padding: 10px 20px;
   }
 }
 @media (min-width: 769px) {
@@ -551,20 +586,37 @@ nav {
     height: 90%;
   }
 
-  .longFooter {
+  .howFast {
+    padding: 20px 0;
+  }
+
+  .longFooter,
+.pc {
     display: block;
   }
 
-  .shortFooter {
+  .shortFooter,
+.mobile {
     display: none;
   }
 
   .finalResult {
-    height: 70%;
+    flex-direction: row;
+    height: 80%;
+    padding: 0;
   }
 
   .finalResultLeft {
     width: 70%;
+    padding: 0 40px;
+  }
+  .finalResultLeft .reset {
+    margin: 20px 0 0 auto;
+  }
+
+  .finalResultRight {
+    width: 40%;
+    display: block;
   }
 
   .point {
@@ -578,22 +630,6 @@ nav {
     font-size: 26px;
   }
 
-  .mobile {
-    display: none;
-  }
-
-  .pc {
-    display: block;
-  }
-
-  .finalResult {
-    flex-direction: row;
-  }
-
-  .finalResultRight {
-    width: 40%;
-  }
-
   .won3 {
     background-size: 150%;
     background-position: 50% 100%;
@@ -605,69 +641,20 @@ nav {
 .lost1,
 .lost2,
 .lost3 {
-    background-position: center right;
+    background-position: bottom right;
+  }
+
+  .aiOption {
+    background-size: 90%;
   }
 }
-.won,
-.draw,
-.lost {
-  position: relative;
-}
-
-.won::after,
-.draw::after,
-.lost::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  border-radius: 10px;
-}
-
-.won {
-  box-shadow: inset 0 0 25px greenyellow;
-}
-
-.won::after {
-  background-color: green;
-}
-
-.draw {
-  box-shadow: inset 0 0 25px yellow;
-}
-
-.draw::after {
-  background-color: rgb(179, 179, 0);
-}
-
-.lost {
-  box-shadow: inset 0 0 25px rgb(216, 24, 24);
-}
-
-.lost::after {
-  background-color: rgb(150, 0, 0);
-}
-
-footer {
-  padding: 0 20px;
-  height: 60px;
-  width: 100%;
-  background-color: rgba(135, 0, 0, 0.8);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 @media (orientation: landscape) and (min-width: 992px) {
   .howToPlay {
     flex-direction: row;
     height: 70%;
     width: 90%;
-    padding: 20px;
     max-width: 900px;
+    padding: 20px;
   }
 
   .howToPlayLeft {

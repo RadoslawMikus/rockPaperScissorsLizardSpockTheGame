@@ -13,6 +13,9 @@ const finalResultHeader = document.querySelector(".finalResult h1");
 const finalResultModal = document.querySelector(".finalResultRight");
 const randomQuoteDiv = document.querySelector(".randomQuote");
 
+// ------------------------------
+// OPTION CLASS
+// ------------------------------
 class Option {
   constructor(rock, paper, scissors, lizard, spock) {
     this.rock = rock;
@@ -22,6 +25,10 @@ class Option {
     this.spock = spock;
   }
 
+  // ------------------------------
+  // CHECKING WHO WON
+  // ------------------------------
+
   haveYouWon(aiChoice, plChoice) {
     this.aiChoice = this[aiChoice];
     clearOptions();
@@ -30,7 +37,7 @@ class Option {
       choice.classList.remove("poHover");
       choice.classList.add("blocked");
     });
-    document.querySelector(".howFast").textContent = timer();
+    document.querySelector(".howFast span").textContent = " " + timer();
     if (this.aiChoice) {
       playerPoints[parseInt(playerPoint.textContent)].classList.add("scored");
       playerPoint.textContent = parseInt(playerPoint.textContent) + 1;
@@ -49,20 +56,29 @@ class Option {
       statusResult.textContent = "Point for Sheldon!";
     }
 
-    if (playerPoint.textContent === "5") {
+    // ------------------------------
+    // CHECKING RESULT
+    // ------------------------------
+
+    const resultPhrase = document.querySelector(".resultPhrase");
+    const scoreLimit = "5";
+
+    if (playerPoint.textContent === scoreLimit) {
       finalResultModal.classList.add("won" + randomizer(1, 3));
       randomQuoteDiv.textContent = randomQuote("won");
-      finalResult.classList.remove("hide");
-      overlay.classList.remove("hide");
+      [finalResult, overlay].forEach((el) => el.classList.remove("hide"));
       finalResultHeader.textContent = "You won!";
+      resultPhrase.textContent =
+        "It seems unreal but you have beaten Sheldon The Great!";
       startButton.addEventListener("click", checkIfWon);
       clearInterval(timerInterval);
-    } else if (aiPoint.textContent === "5") {
+    } else if (aiPoint.textContent === scoreLimit) {
       finalResultModal.classList.add("lost" + randomizer(1, 3));
       randomQuoteDiv.textContent = randomQuote("lost");
-      finalResult.classList.remove("hide");
-      overlay.classList.remove("hide");
+      [finalResult, overlay].forEach((el) => el.classList.remove("hide"));
       finalResultHeader.textContent = "You lose!";
+      resultPhrase.textContent =
+        "Ha ha! It must be humbling to suck on so many different levels.";
       startButton.addEventListener("click", checkIfWon);
       clearInterval(timerInterval);
     } else {
@@ -79,19 +95,26 @@ class Option {
   }
 }
 
+// ------------------------------
+// CREATING OPTIONS
+// ------------------------------
 const rock = new Option(null, false, true, true, false);
 const paper = new Option(true, null, false, false, true);
 const scissors = new Option(false, true, null, true, false);
 const lizard = new Option(false, true, false, null, true);
 const spock = new Option(true, false, true, false, null);
 
+// ------------------------------
+// PLAYER CHOICE
+// ------------------------------
 const playerChoice = function () {
   playerChoices.forEach((choice) => {
     choice.addEventListener("click", (e) => {
-      // RESET ACTIVES
+      //// RESET ACTIVES
       playerChoices.forEach((choice) => {
         choice.classList.remove("active");
       });
+      ////SET TIMER IF NOT RUNNING
       if (
         parseInt(aiPoint.textContent) === 0 &&
         parseInt(playerPoint.textContent) === 0 &&
@@ -99,7 +122,7 @@ const playerChoice = function () {
       ) {
         timerInterval = setInterval(timer, 1000);
       }
-      // ADD ACTIVE
+      //// ADD ACTIVE
       if (!choice.classList.contains("blocked")) {
         choice.classList.add("active");
       }
@@ -107,13 +130,14 @@ const playerChoice = function () {
   });
 };
 
+// ------------------------------
+// CHECK IF WON
+// ------------------------------
 const checkIfWon = () => {
   if (document.querySelector(".active")) {
     pcOption.makeADecision();
     const daChoice = document.querySelector(".active").getAttribute("name");
     eval(daChoice).haveYouWon(aiChoice.getAttribute("name"), daChoice);
-  } else {
-    console.log("Wybierz coś");
   }
 };
 
