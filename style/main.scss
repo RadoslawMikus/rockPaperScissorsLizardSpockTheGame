@@ -271,7 +271,10 @@ nav {
   border: 1px solid #000 {
     radius: 10px;
   }
-  background-color: $optionBg;
+  background: {
+    color: $optionBg;
+    size: contain;
+  }
 }
 
 .poHover {

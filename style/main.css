@@ -233,6 +233,7 @@ nav {
   border: 1px solid #000;
   border-radius: 10px;
   background-color: #808080;
+  background-size: contain;
 }
 
 .poHover {
