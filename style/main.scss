@@ -665,7 +665,6 @@ footer {
     height: 100%;
     display: flex;
     justify-content: center;
-
     flex-direction: column;
 
     .randomQuote {
@@ -782,5 +781,29 @@ footer {
   .aiOption {
     width: 55%;
     height: 80%;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 400px) {
+  .howFast {
+    display: none;
+  }
+
+  .finalResult {
+    width: 70%;
+  }
+  .finalResultLeft {
+    h1 {
+      font-size: 20px;
+    }
+
+    .randomQuote {
+      padding: 10px 20px;
+    }
+
+    .reset {
+      font-size: 18px;
+      padding: 5px;
+    }
   }
 }

@@ -687,3 +687,23 @@ footer {
     height: 80%;
   }
 }
+@media (orientation: landscape) and (max-height: 400px) {
+  .howFast {
+    display: none;
+  }
+
+  .finalResult {
+    width: 70%;
+  }
+
+  .finalResultLeft h1 {
+    font-size: 20px;
+  }
+  .finalResultLeft .randomQuote {
+    padding: 10px 20px;
+  }
+  .finalResultLeft .reset {
+    font-size: 18px;
+    padding: 5px;
+  }
+}
