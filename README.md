@@ -1,7 +1,7 @@
 ## rockPaperScissorsLizardSpockTheGame
 
-### Repository: https://github.com/davidsmith931/rockPaperScissorsLizardSpockTheGame
-### Live Demo: https://davidsmith931.github.io/rockPaperScissorsLizardSpockTheGame/
+### Repository: https://github.com/RadoslawMikus/rockPaperScissorsLizardSpockTheGame
+### Live Demo: https://radoslawmikus.github.io/rockPaperScissorsLizardSpockTheGame/
 
 _The Big Bang Theory version of Rock, Paper, Scissors_
 
